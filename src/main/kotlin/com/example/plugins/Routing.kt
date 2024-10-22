@@ -1,6 +1,7 @@
 package com.example.plugins
 
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import java.io.File
@@ -11,7 +12,10 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
         get("/list-files") {
-            val directoryPath = "./cert" // Relative path from the project root
+            val bodyText = call.receiveText()
+            val textWithoutQuotes = bodyText.replace("\"", "")
+            println("Received body: '$textWithoutQuotes'")
+            val directoryPath = textWithoutQuotes // Relative path from the project root
             val directory = File(directoryPath)
 
             if (directory.exists() && directory.isDirectory) {

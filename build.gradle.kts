@@ -25,6 +25,15 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-config-yaml")
+    // To manage SDK dependencies for your Gradle project, add the Maven bill
+    // of materials (BOM) for the AWS SDK for Java 2.x
+    implementation(platform("software.amazon.awssdk:bom:2.28.26"))
+    // With the bom declared, you specify individual SDK dependencies without a version.
+    // Specify the SDK modules your application needs in the dependencies section.
+    implementation("software.amazon.awssdk:s3")
+    implementation("software.amazon.awssdk.iotdevicesdk:aws-iot-device-sdk:1.21.0")
+
+
     testImplementation("io.ktor:ktor-server-test-host-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }

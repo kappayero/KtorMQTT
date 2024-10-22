@@ -6,4 +6,4 @@ COPY /build/libs/*.jar /app/ktor-docker-sample.jar
 ENTRYPOINT ["java","-jar","/app/ktor-docker-sample.jar"]
 
 # docker build -t ktormqtt .
-# docker run -p 8099:8080 ktormqtt -d
+# docker run -p 8099:8080 --name ktormqtt ktormqtt

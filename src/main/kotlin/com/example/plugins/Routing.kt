@@ -11,7 +11,7 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
         get("/list-files") {
-            val directoryPath = "cert/cert" // Relative path from the project root
+            val directoryPath = "./cert" // Relative path from the project root
             val directory = File(directoryPath)
 
             if (directory.exists() && directory.isDirectory) {
